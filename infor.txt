@@ -8,3 +8,6 @@ $.ajaxSetup({
 
 //"GET /MyDjangoApp/rest/update/?csrfmiddlewaretoken=dAOjob7MF2CtDK1txqMDhtDjF2oUD5No&myarea=%7B%22Age%22+%3A+%2235%22%7D%2C%7B%22%24set%22%3A%7B%22Age%22+%3A+%223500%22%7D%7D HTTP/1.1" 200 9
 if isinstance(s,list):
+
+
+
