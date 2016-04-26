@@ -1,0 +1,177 @@
+03/25/2016 03:02:22 - INFO - update/{"Age": "35"} 
+03/25/2016 03:02:22 - ERROR - Internal Server Error: /MyDjangoApp/rest/update/{"Age": "35"} /
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\workspace\MyTestDjango\MyDjangoApp\restful.py", line 61, in update
+    ret = db.mytable.update(myjson[0],myjson[1])
+IndexError: list index out of range
+03/25/2016 03:03:36 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/25/2016 03:05:03 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/25/2016 03:11:38 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/25/2016 03:16:51 - WARNING - Forbidden (CSRF token missing or incorrect.): /MyDjangoApp/rest/update/{"Age" : "35"},{"$set":{"Age" : "3500"}}/
+03/25/2016 03:20:11 - INFO - search/{}
+03/25/2016 03:20:29 - INFO - search/{}
+03/25/2016 03:20:40 - INFO - insert/{"Age" : "35", "Name": "Hanh", "Street": "1234"}
+03/25/2016 03:21:08 - WARNING - Forbidden (CSRF token missing or incorrect.): /MyDjangoApp/rest/update/{"Age" : "35"},{"$set":{"Age" : "3500"}}/
+03/25/2016 03:21:38 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/25/2016 03:21:58 - INFO - search/{}
+03/25/2016 03:22:13 - INFO - update/{"Age" : "3500"},{"$set":{"Age" : "3501"}}
+03/25/2016 03:24:19 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:07:47 - INFO - Connect to DB:hanhdb
+03/28/2016 12:08:02 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:08:40 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:08:40 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:32:48 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:33:24 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:34:18 - WARNING - Forbidden (CSRF token missing or incorrect.): /MyDjangoApp/rest/update/{"Age" : "35"},{"$set":{"Age" : "3500"}}/
+03/28/2016 12:36:14 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:36:39 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:38:08 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:38:35 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:42:32 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:44:26 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:45:57 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:47:27 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:48:59 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 12:57:43 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/28/2016 01:07:35 - INFO - search/{"Age" : "35"}
+03/28/2016 01:07:38 - INFO - search/{"Age" : "35"}
+03/28/2016 01:07:43 - INFO - search/{"Age" : "35"}
+03/28/2016 01:08:13 - INFO - search/{}
+03/28/2016 01:11:01 - INFO - search/{"Age" : "35"}
+03/28/2016 01:11:10 - INFO - search/{}
+03/28/2016 01:11:34 - INFO - search/{}
+03/29/2016 10:54:11 - INFO - search/{}
+03/29/2016 10:55:30 - INFO - search/{}
+03/29/2016 10:55:46 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/29/2016 10:57:03 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/29/2016 10:57:17 - INFO - insert/{"Age" : "35", "Name": "Hanh", "Street": "1234"}
+03/29/2016 10:58:19 - INFO - search/{}
+03/29/2016 10:58:30 - INFO - delete/{"Age" : "35"}
+03/29/2016 10:58:36 - INFO - search/{}
+03/29/2016 10:58:42 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+03/29/2016 11:03:24 - INFO - search/{}
+03/29/2016 11:04:19 - INFO - search/{}
+03/29/2016 11:04:26 - INFO - search/{}
+03/29/2016 11:04:29 - INFO - search/{"Age" : "35"}
+03/29/2016 11:05:26 - INFO - search/{}
+03/29/2016 11:06:18 - INFO - search/{}
+03/29/2016 11:07:24 - INFO - search/{}
+03/29/2016 11:12:06 - INFO - search/{}
+03/29/2016 11:13:02 - INFO - search/{}
+03/29/2016 11:13:16 - INFO - insert/{"Age" : "35", "Name": "Hanh", "Street": "1234"}
+03/29/2016 11:13:20 - INFO - search/{}
+03/29/2016 11:14:32 - INFO - search/{}
+03/29/2016 11:15:26 - INFO - search/{}
+03/29/2016 11:16:17 - INFO - search/{}
+03/29/2016 11:17:06 - INFO - delete/{"Age" : "35"}
+03/31/2016 03:37:40 - INFO - search/{"Age" : "35"}
+03/31/2016 03:37:43 - INFO - search/{}
+04/06/2016 11:25:43 - INFO - search/{"Age": "35"} 
+04/06/2016 11:25:53 - INFO - search/{}
+04/06/2016 11:27:20 - INFO - insert/{"Age" : "35", "Name": "Hanh", "Street": "1234"}
+04/06/2016 11:27:32 - INFO - insert/{"Age" : "35", "Name": "Hanh", "Street": "1234"}
+04/06/2016 11:27:32 - INFO - insert/{
+  "$oid": "57052ae48c502815f08a1258"
+}
+04/06/2016 11:27:32 - ERROR - Internal Server Error: /MyDjangoApp/rest/insert/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\workspace\MyTestDjango\MyDjangoApp\restful.py", line 50, in insert
+    ret = db.mytable.insert(json.loads(data))
+  File "C:\Python27\lib\site-packages\pymongo\collection.py", line 2205, in insert
+    check_keys, manipulate, write_concern)
+  File "C:\Python27\lib\site-packages\pymongo\collection.py", line 530, in _insert
+    check_keys, manipulate, write_concern, op_id, bypass_doc_val)
+  File "C:\Python27\lib\site-packages\pymongo\collection.py", line 512, in _insert_one
+    check_keys=check_keys)
+  File "C:\Python27\lib\site-packages\pymongo\pool.py", line 218, in command
+    self._raise_connection_failure(error)
+  File "C:\Python27\lib\site-packages\pymongo\pool.py", line 346, in _raise_connection_failure
+    raise error
+InvalidDocument: key '$oid' must not start with '$'
+04/06/2016 11:27:43 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+04/06/2016 11:28:33 - INFO - insert/{"Age" : "35", "Name": "Hanh", "Street": "1234"}
+04/06/2016 11:28:33 - INFO - insert/{"Age" : "35", "Name": "Hanh", "Street": "1234"}
+04/06/2016 11:28:53 - INFO - search/[  {    "Age": "3501",    "Street": "1234",    "Name": "Hanh",    "_id": {      "$oid": "56f58f888c502817d06acf1a"    }  }]
+04/06/2016 11:28:53 - ERROR - Internal Server Error: /MyDjangoApp/rest/search/[  {    "Age": "3501",    "Street": "1234",    "Name": "Hanh",    "_id": {      "$oid": "56f58f888c502817d06acf1a"    }  }]/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\workspace\MyTestDjango\MyDjangoApp\restful.py", line 42, in search
+    ret = db.mytable.find( json.loads(json_query))
+  File "C:\Python27\lib\site-packages\pymongo\collection.py", line 1137, in find
+    return Cursor(self, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\pymongo\cursor.py", line 121, in __init__
+    validate_is_mapping("filter", spec)
+  File "C:\Python27\lib\site-packages\pymongo\common.py", line 375, in validate_is_mapping
+    "collections.Mapping" % (option,))
+TypeError: filter must be an instance of dict, bson.son.SON, or other type that inherits from collections.Mapping
+04/06/2016 11:28:53 - INFO - search/[  {    "Age": "3501",    "Street": "1234",    "Name": "Hanh",    "_id": {      "$oid": "56f58f888c502817d06acf1a"    }  }]
+04/06/2016 11:28:53 - ERROR - Internal Server Error: /MyDjangoApp/rest/search/[  {    "Age": "3501",    "Street": "1234",    "Name": "Hanh",    "_id": {      "$oid": "56f58f888c502817d06acf1a"    }  }]/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\workspace\MyTestDjango\MyDjangoApp\restful.py", line 42, in search
+    ret = db.mytable.find( json.loads(json_query))
+  File "C:\Python27\lib\site-packages\pymongo\collection.py", line 1137, in find
+    return Cursor(self, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\pymongo\cursor.py", line 121, in __init__
+    validate_is_mapping("filter", spec)
+  File "C:\Python27\lib\site-packages\pymongo\common.py", line 375, in validate_is_mapping
+    "collections.Mapping" % (option,))
+TypeError: filter must be an instance of dict, bson.son.SON, or other type that inherits from collections.Mapping
+04/06/2016 11:28:55 - INFO - search/[  {    "Age": "3501",    "Street": "1234",    "Name": "Hanh",    "_id": {      "$oid": "56f58f888c502817d06acf1a"    }  }]
+04/06/2016 11:28:55 - ERROR - Internal Server Error: /MyDjangoApp/rest/search/[  {    "Age": "3501",    "Street": "1234",    "Name": "Hanh",    "_id": {      "$oid": "56f58f888c502817d06acf1a"    }  }]/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\workspace\MyTestDjango\MyDjangoApp\restful.py", line 42, in search
+    ret = db.mytable.find( json.loads(json_query))
+  File "C:\Python27\lib\site-packages\pymongo\collection.py", line 1137, in find
+    return Cursor(self, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\pymongo\cursor.py", line 121, in __init__
+    validate_is_mapping("filter", spec)
+  File "C:\Python27\lib\site-packages\pymongo\common.py", line 375, in validate_is_mapping
+    "collections.Mapping" % (option,))
+TypeError: filter must be an instance of dict, bson.son.SON, or other type that inherits from collections.Mapping
+04/06/2016 11:29:17 - INFO - insert/{"Age" : "35", "Name": "Hanh", "Street": "1234"}
+04/06/2016 11:29:29 - INFO - search/[  {    "Age": "3501",    "Street": "1234",    "Name": "Hanh",    "_id": {      "$oid": "56f58f888c502817d06acf1a"    }  }]
+04/06/2016 11:29:29 - ERROR - Internal Server Error: /MyDjangoApp/rest/search/[  {    "Age": "3501",    "Street": "1234",    "Name": "Hanh",    "_id": {      "$oid": "56f58f888c502817d06acf1a"    }  }]/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\workspace\MyTestDjango\MyDjangoApp\restful.py", line 42, in search
+    ret = db.mytable.find( json.loads(json_query))
+  File "C:\Python27\lib\site-packages\pymongo\collection.py", line 1137, in find
+    return Cursor(self, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\pymongo\cursor.py", line 121, in __init__
+    validate_is_mapping("filter", spec)
+  File "C:\Python27\lib\site-packages\pymongo\common.py", line 375, in validate_is_mapping
+    "collections.Mapping" % (option,))
+TypeError: filter must be an instance of dict, bson.son.SON, or other type that inherits from collections.Mapping
+04/06/2016 11:35:06 - WARNING - Not Found: /favicon.ico
+04/06/2016 11:35:09 - INFO - search/{}
+04/06/2016 11:35:54 - INFO - search/{"Age" : "35"}
+04/06/2016 11:36:11 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+04/06/2016 11:36:16 - INFO - search/{}
+04/06/2016 11:36:39 - INFO - update/{"Age" : "35"},{"$set":{"Age" : "3500"}}
+04/06/2016 11:36:45 - INFO - search/{"Age" : "35"}
+04/06/2016 11:36:48 - INFO - search/{}
+04/12/2016 03:48:57 - WARNING - Not Found: /favicon.ico
+04/12/2016 03:49:01 - INFO - search/{}
+04/12/2016 03:57:09 - INFO - search/{"Age" : "35"}

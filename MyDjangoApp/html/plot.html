@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<link rel="stylesheet" type="text/css" href="js/jquery.jqplot.min.css" />
+<script type="text/javascript">
+
+//Single submit
+$(document).ready(function(){
+var draw = function(){	
+		var cosPoints = [];
+	    var regExp = /\(([^)]+)\)/g;	   
+	    var input = window.opener.str;
+	    $("#exp").html("Function = " + input);
+	    var matches = input.match(regExp);
+	    var ar = matches[0].substring(0,matches[0].length - 1).split(",");         	 
+	    var arr = window.opener.ret.result.split("<br>");
+	    
+	   var loop = parseInt(ar[3]);	   
+	   for (var i=0; i<loop; i++ ){
+		  cosPoints.push([i, arr[i]]);
+	   }	   
+		$.jqplot('chart2', [cosPoints], {
+		  series:[{showMarker:false}],
+		  axes:{
+			xaxis:{label: 'Length'},
+			yaxis:{min:arr.min(), max:arr.max()  , label:'Freq Hz'}
+		  }
+	   });
+	};
+	
+	draw();
+/*** EndFunctions ***/
+});
+Array.prototype.max = function() {
+	  return Math.max.apply(null, this);
+	};
+
+Array.prototype.min = function() {
+	  return Math.min.apply(null, this);
+	};
+/*** EndjQuery ***/
+</script>
+
+<title>MatLab Plot</title>
+</head>
+<body>
+<h1>MatLab Plot</h1>
+<div id="exp"></div> 
+<br>
+<hr>
+<div id="chart2" style="height:300px; width:600px;"></div>
+
+</body>
+</html>
+
+
+
+

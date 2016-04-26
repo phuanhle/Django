@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!-- {% load staticfiles %}  -->
+<!-- <img src="{% static "image.jpg" %}" alt="Picture of Rango" /> -->
+<html>
+<head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+
+<script type="text/javascript" src="/static/js/jquery.min.js" ></script> 
+<script type="text/javascript" src="/static/js/jquery.jqplot.min.js' %}"></script>
+<script type="text/javascript" src="/static/js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/static/js/jquery.jqplot.min.css" />
+
+
+<style title='sams'>
+.ex {background-color:lightblue; white-space: pre;}
+.help {cursor:help}
+input:focus {background-color:lightgray; }
+table.res tr:nth-child(odd){background-color:lightgreen;white-space: pre;}
+table.res tr:nth-child(even){background-color:lightblue;white-space: pre;}
+table.res {background-color:lightblue; box-shadow: 5px 5px 5px #888888;}
+
+table.id tr:nth-child(odd){background-color:#99FF66;white-space: pre; }
+table.id tr:nth-child(even){background-color:#99FFCC;white-space: pre;}
+table.id {background-color:yellow; box-shadow: 10px 10px 5px #888888;}
+
+table.id2 {background-color:lightblue; box-shadow: 5px 5px 5px #888888;}
+</style>
+
+<script type="text/javascript">
+var cosPoints = [];
+var arr;
+var ret;
+
+
+//Document
+$(document).ready(function(){
+  
+	//For searching
+	$("#search").click(function(){			
+		$("#chart1").html("");		
+		$.ajax({	     
+		    url : "./search",
+		    type : "post",
+		    data : $('form').serialize(),
+		    //cache : false, //for GET only
+		    async : true,
+		    success : function(data) {
+		    	//alert(data);		    	
+		    	//ret = $.parseJSON(data);		    	
+		    	displayData(data);
+		    	
+		    }
+		}); 	
+			
+	});  
+
+	//For update
+	$("#update").click(function(){				 	
+		$.ajax({	     
+		    url : "./update",
+		    type : "post",
+		    data : $('form').serialize(),
+		    //cache : false, //for GET only
+		    async : true,
+		    success : function(data) {
+		    	alert(data);		    	
+		    	ret = $.parseJSON(data);
+		    	alert(data);
+		    	displayData(ret); 	    	
+		    }
+		}); 				
+	});  
+	
+	//For update
+	$("#insert").click(function(){				 	
+		$.ajax({	     
+		    url : "./insert",
+		    type : "post",
+		    data : $('form').serialize(),
+		    //cache : false, //for GET only
+		    async : true,
+		    success : function(data) {
+		    	//alert(data);		    	
+		    	ret = $.parseJSON(data);		    	
+		    	displayData(ret); 	    	
+		    }
+		}); 				
+	});  
+
+	//For Delete
+	$("#delete").click(function(){				 	
+		$.ajax({	     
+		    url : "./delete",
+		    type : "post",
+		    data : $('form').serialize(),
+		    //cache : false, //for GET only
+		    async : true,
+		    success : function(data) {
+		    	//alert(data);		    	
+		    	//ret = $.parseJSON(data);		    	
+		    	displayData(ret); 	    	
+		    }
+		}); 				
+	});  
+
+/*** EndFunctions ***/
+});
+
+/*** EndjQuery ***/
+
+
+/* Diaplay output */
+function displayData(jsonObj){
+	var list = "<ul>";
+	$.each(jsonObj, recurse);
+
+	function recurse(key, val) {
+	    list += "<li>";
+	    if (val instanceof Object) {
+	        list += key + "<ul>";
+	        $.each(val, recurse);
+	        list += "</ul>";
+	    } else {
+	        list +=  key + " : " + val;
+	    }
+	    list += "</li>";
+	}
+	list += "</ul>";
+
+	$("#chart1").html(list);
+	
+	load(jsonObj);    
+}//funct
+
+
+/*
+ * Load into edit fields
+ */
+function load(jsonObj){
+	$("#Name").val(jsonObj[0].Name);
+	$("#Street").val(jsonObj[0].Street);
+}
+
+/*
+ * Load into edit fields
+ */
+function validate(){	
+	return ( $("#Age").val() && $("#Name").val() && $("#Street").val() )	
+}
+
+/*
+ * Find max
+ */
+Array.prototype.max = function() {
+	  return Math.max.apply(null, this);
+	};
+
+Array.prototype.min = function() {
+	  return Math.min.apply(null, this);
+	};
+		
+//Add response message to the table
+function tableAddRow(jsonObj, tableId){
+	var table = document.getElementById(tableId);
+	var row = table.insertRow(0);
+	var cell1 = row.insertCell(0);
+	var cell2 = row.insertCell(1);	
+	cell1.innerHTML = jsonObj.exp;
+	cell2.innerHTML = jsonObj.result;
+}//funct
+
+function trim(x){return x.replace(/^\s+|\s+$/gm,'');}
+
+/*
+ *  Load input from selection box to input fields
+ */
+function mySelect(){
+	var value = $("#mySelect option:selected" ).val();		
+    $("#Age").val(value);
+	$("#Name").val("");
+	$("#Street").val("");
+}//funct
+
+
+		
+</script>
+
+<title>Django Home</title>
+</head>
+<body>
+<h1>Examples using HttpPost</h1> 
+<br>
+<br>
+
+
+
+
+
+
+
+<form>{% csrf_token %}
+<table class='id2' border="0" >
+<tr>
+<td>(Key Search)Age:</td><td><input id="Age" name="Age" type="text" size="35" value="My age"/></td>
+</tr><tr>
+<td>Name:</td><td><input id="Name" name="Name" type="text" size="35" value="My name"/></td>
+</tr><tr>
+<td>Street:</td><td><input id="Street" name="Street" type="text" size="35" value="My address"/></td>
+</td>
+</tr>
+</table>
+</form>
+<br>
+
+
+<table class='id2' border="0" >
+<tr>
+<td><button id='search' >Search</button></td>
+<td><button id='update'>Update</button></td>
+<td><button id='insert'>Insert</button></td>
+<td><button id='delete'>Delete</button></td>
+<!-- <td><button id='validate'>Validate</button></td>  -->
+</tr></table>
+<br>
+<hr>
+Select a request message:
+<br>
+<select id="mySelect"  onchange="mySelect()" style="width: 250px;">
+    <option value="*">Select</option>
+	<option value="45"> 45 </option>
+	<option value="35"> 35 </option>
+	<option value="26"> 26 </option>
+	<option value="53"> 53 </option>
+	<option value="*">*</option>
+</select>
+
+
+<hr>
+<br>
+
+Response Message :
+<!-- Output -->
+<table class='res' id="myTable" border="1" width="100%" ><tr>
+<td width="30%">Expression</td><td width="70%">Result</td>
+</tr></table>
+
+<br>
+
+<br>
+<div id="chart1" style="height:300px; width:600px;">Empty</div>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<meta http-equip="X-CSRFToken2222" name="dAOjob7MF2CtDK1txqMDhtDjF2oUD5No" />
+<!-- {% load staticfiles %}  -->
+<!-- <img src="{% static "image.jpg" %}" alt="Picture of Rango" /> -->
+<html>
+<head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+
+<script type="text/javascript" src="/static/js/jquery.min.js" ></script> 
+<script type="text/javascript" src="/static/js/jquery.jqplot.min.js' %}"></script>
+<script type="text/javascript" src="/static/js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/static/js/jquery.jqplot.min.css" />
+
+
+<style title='sams'>
+.ex {background-color:lightblue; white-space: pre;}
+.help {cursor:help}
+input:focus {background-color:lightgray; }
+table.res tr:nth-child(odd){background-color:lightgreen;white-space: pre;}
+table.res tr:nth-child(even){background-color:lightblue;white-space: pre;}
+table.res {background-color:lightblue; box-shadow: 5px 5px 5px #888888;}
+
+table.id tr:nth-child(odd){background-color:#99FF66;white-space: pre; }
+table.id tr:nth-child(even){background-color:#99FFCC;white-space: pre;}
+
+table.id1 {background-color:#99FFCC; box-shadow: 5px 5px 5px #888888;}
+table.id2 {background-color:lightblue; box-shadow: 5px 5px 5px #888888;}
+</style>
+
+<script type="text/javascript">
+
+var mywin;
+
+//Document
+$(document).ready(function(){
+	$.ajaxSetup({
+		   'beforeSend': function(xhr) {           		      
+		      xhr.setRequestHeader("X-CSRFToken", $('input[name=csrfmiddlewaretoken]').val())
+		    }
+		});
+	
+	//For run in mode {ajax, new window}	
+	
+
+	//Calling Ajax	
+	//beforeSend: function( xhr ) {xhr.setRequestHeader("X-CSRFToken", "dAOjob7MF2CtDK1txqMDhtDjF2oUD5No")},
+    runAjaxPost = function(myurl, method_type){		
+          $.ajax({             	          	  
+        	  //beforeSend: function( xhr ) { xhr.setRequestHeader("X-CSRFToken", $('input[name=csrfmiddlewaretoken]').val()) },
+              url : myurl,
+              type : method_type,
+              data :  $('form').serialize(),
+              async : true,              
+              success : function(data1) {
+            	  $("#myarea").val(JSON.stringify(data1,null,"  "));            	  
+            	  displayData(data1);                 
+              }
+          });                     
+    }
+ 
+	
+
+	
+	//For searching GET
+	$("#search").click(function(){
+		var myurl = "./rest/search/" + $("#myarea").val() + "/"; //get
+		runAjaxPost(myurl,"GET");
+		//if(mywin){mywin.close()};
+	    //mywin = window.open(myurl);  //using http:GET			
+	});  
+
+	//For update PUT
+	$("#update").click(function(){
+		$("#chart1").html("");		
+		var myurl = "./rest/update/" + $("#myarea").val() + "/"; //data-method="PUT">
+		//$('#myform').attr("action", myurl).attr("data-method","PUT").submit();
+		runAjaxPost(myurl,"PUT");
+	});  
+	
+	//For insert POST   //method="post" 
+	$("#insert").click(function(){
+		$("#chart1").html("");
+		var myurl = "./rest/insert/";						
+		//$('#myform').attr("action", myurl).attr("method","POST").submit();
+		runAjaxPost(myurl,"POST");
+	});  
+
+	//For Delete
+	$("#delete").click(function(){
+		$("#chart1").html("");		
+		var myurl = "./rest/delete/" + $("#myarea").val() + "/";		
+		//$('#myform').attr("action", myurl).attr("method","DELETE").submit();
+		runAjaxPost(myurl,"DELETE");
+	});  
+	
+	
+
+/*** EndFunctions ***/
+}); /*** EndjQuery ***/
+
+
+
+/* Display output */
+function displayData(jsonObj){
+	var list = "<ul>";
+	$.each(jsonObj, recurse);
+
+	function recurse(key, val) {
+	    list += "<li>";
+	    if (val instanceof Object) {
+	        list += key + "<ul>";
+	        $.each(val, recurse);
+	        list += "</ul>";
+	    } else {
+	        list +=  key + " : " + val;
+	    }
+	    list += "</li>";
+	}
+	list += "</ul>";
+
+	$("#chart1").html(list);
+	
+	load(jsonObj);    
+}//funct
+
+
+
+
+/*
+ * Load into edit fields
+ */
+function load(jsonObj){
+	$("#Age").val(jsonObj[0].Age);
+	$("#Name").val(jsonObj[0].Name);
+	$("#Street").val(jsonObj[0].Street);
+}
+
+
+/*
+ * Find max
+ */
+Array.prototype.max = function() {
+	  return Math.max.apply(null, this);
+	};
+
+Array.prototype.min = function() {
+	  return Math.min.apply(null, this);
+	};
+		
+//Add response message to the table
+function tableAddRow(jsonObj, tableId){
+	var table = document.getElementById(tableId);
+	var row = table.insertRow(0);
+	var cell1 = row.insertCell(0);
+	var cell2 = row.insertCell(1);	
+	cell1.innerHTML = jsonObj.exp;
+	cell2.innerHTML = jsonObj.result;
+}//funct
+
+function trim(x){return x.replace(/^\s+|\s+$/gm,'');}
+
+/*
+ *  Load input from selection box to input fields
+ */
+function mySelect(){
+	var value = $("#mySelect option:selected" ).val();		
+    $("#myarea").val(value);
+}//funct
+</script>
+
+
+<title>Django Home</title>
+</head>
+<body>
+<h1>Restful Examples</h1> 
+<br>
+<br>
+
+
+<form name="myform" id="myform">{% csrf_token %}
+<textarea id="myarea" name="myarea" rows="15" cols="400" >
+{"Age": "35"} 
+</textarea>
+</form>
+<br>
+<table class='id2' border="0" >
+<tr>
+<td>(Key Search)Age:</td><td><input id="Age" name="Age" type="text" size="35" value="My age"/></td>
+</tr><tr>
+<td>Name:</td><td><input id="Name" name="Name" type="text" size="35" value="My name"/></td>
+</tr><tr>
+<td>Street:</td><td><input id="Street" name="Street" type="text" size="35" value="My address"/></td>
+</td>
+</tr>
+</table>
+
+
+<br>
+<table class='id2' border="0" >
+<tr>
+<td>Mode:</td>
+     <td>
+     <!-- 
+     <input type="radio" id="radioMode" name="radioMode"  value="1" />Restful-Get<br />          
+     <input type="radio" id="radioMode" name="radioMode" checked value="2" />Restful-Post<br />
+     <input type="radio" id="radioMode" name="radioMode" value="3" />Ajax<br />
+     -->
+     </td>
+</tr>
+</table>
+
+<p>
+<table class='id2' border="0" >
+<tr>
+<td><button id='search' >Search(GET)</button></td>
+<td><button id='update'>Update(PUT)</button></td>
+<td><button id='insert'>Insert(POST)</button></td>
+<td><button id='delete'>Delete(DELETE)</button></td>
+<!-- <td><button id='validate'>Validate</button></td>  -->
+</tr></table>
+<br>
+<hr>
+Select a request message:
+<br>
+<select id="mySelect"  size=6 onchange="mySelect()" style="width: 250px;">
+    <option value="">Select</option>
+    <option value='{}'>Search {}</option>
+	<option value='{"Age" : "35"}'>Search {"Age" : "35"}</option>
+	<option value='{"$or":[{"Age" : "35"},{"Age" : "26"}]}'>Search {"$or":[{"Age" : "35"},{"Age" : "26"}]}</option>
+	<option value='{"Age" : "35"}'>Delete {"Age" : "35"}</option>
+	<option value='{"Age" : "35", "Name": "Hanh", "Street": "1234"}'>Insert {"Age" : "35", "Name": "Hanh", "Street": "1234"} </option>
+	<option value='{"Age" : "35"},{"$set":{"Age" : "3500"}}'>Update {"Age" : "35"},{"$set":{"Age" : "3500"}}</option>	
+</select>
+
+
+<hr>
+<br>
+
+Input Message :
+<!-- Output -->
+<table class='res' id="myTable" border="1" width="100%" ><tr>
+<td width="30%">Expression</td><td width="70%">Result</td>
+</tr></table>
+
+
+<br>
+
+
+<br>
+<div id="chart1" style="height:300px; width:600px;"></div>
+
+</body>
+</html>
+
+
+
+
